@@ -3,6 +3,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/bartmika/logfarm)](https://goreportcard.com/report/github.com/bartmika/logfarm)
 [![License](https://img.shields.io/github/license/bartmika/logfarm)](https://github.com/bartmika/logfarm/blob/master/LICENSE)
 ![Go version](https://img.shields.io/github/go-mod/go-version/bartmika/logfarm)
+
 A syslog server written in Golang. **In development, use at your own risk.**
 
 ## Get Started (Docker)
