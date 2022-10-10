@@ -131,4 +131,6 @@ Resource used:
 
 * [mcuadros/go-syslog.v2](https://github.com/mcuadros/go-syslog) is the low-level `syslog` server implementation which this code builds upon.
 * [spf13/cobra](https://github.com/spf13/cobra) is a commander for modern Go CLI interactions.
+* [rs/zerolog](https://github.com/rs/zerolog) is a logging library heavily utilized in this app.
+* [go-co-op/gocron](https://github.com/go-co-op/gocron) is the library used to run background rolling logs functionality.
 * [Clean Architecture in Go by Panayiotis Kritiotis](https://pkritiotis.io/clean-architecture-in-golang/) was an educational article about *clean architecture* that I adapted to this application.
