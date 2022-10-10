@@ -1,0 +1,41 @@
+version: '3'
+
+tasks:
+  start:
+    cmds:
+      - docker-compose -p logfarm -f dev.docker-compose.yml up
+
+  end:
+    cmds:
+      - docker-compose -p logfarm -f dev.docker-compose.yml down
+
+  console:
+    cmds:
+      - docker exec -it logfarm bash
+
+  deploy:
+    cmds:
+      - docker build -f Dockerfile -t bartmika/logfarm:latest --platform linux/amd64 .
+      - docker tag bartmika/logfarm:latest bartmika/logfarm:latest
+      - docker push bartmika/logfarm:latest
+
+  # The following task will perform a vulnerability scan on our golang project and display any issues found.
+  scan:
+    cmds:
+      - govulncheck ./...
+      - trivy image bartmika/logfarm:latest
+      - trivy repo https://github.com/bartmika/logfarm.git
+
+  # The following command will upgade all the dependencies in this project.
+  upgrade_dep:
+    cmds:
+      - go get -u ./...
+      - go mod tidy
+
+  logout:
+    cmds:
+      - docker logout
+
+  login:
+    cmds:
+      - docker login -u bartmika

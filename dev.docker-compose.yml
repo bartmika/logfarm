@@ -1,0 +1,34 @@
+#-------------
+# DESCRIPTION:
+#-------------
+# The purpose of this docker-compose is to setup our application by contributing
+# developers to work on which utilizes the `hot reload` feature.
+#
+#-------------
+# HOW TO USE:
+#-------------
+# $ docker-compose -p logfarm -f dev.docker-compose.yml up   #
+#
+
+version: '3.8'
+services:
+  app:
+    container_name: logfarm_app
+    stdin_open: true
+    environment:
+        LOGFARM_IP: 0.0.0.0
+        LOGFARM_PORT: 514
+        LOGFARM_DB_FILEPATH: ./db
+        LOGFARM_SETTING_MAX_DAY_AGE: 30 # Maximum days the records can exist in database before old records get deleted.
+    build:
+      context: .
+      dockerfile: ./dev.Dockerfile
+    restart: unless-stopped
+    ports:
+      - "514:514/udp" # Opens UDP 514 required for syslog as specified RFC5424. Do not remove!
+    volumes: # Connect the local filesystem with the docker filesystem.
+      - ./:/go/src/github.com/bartmika/logfarm # IMPORTANT: Required for hotreload via `CompileDaemon`. Do not remove!
+      - app_data:/go/src/github.com/bartmika/logfarm/db # Location of the database. Do not remove!
+
+volumes:
+    app_data:
