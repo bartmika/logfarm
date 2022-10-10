@@ -1,10 +1,10 @@
-# LogFarm
+# 🗒️🚜 logfarm
 [![GoDoc](https://godoc.org/github.com/gomarkdown/markdown?status.svg)](https://pkg.go.dev/github.com/bartmika/logfarm)
 [![Go Report Card](https://goreportcard.com/badge/github.com/bartmika/logfarm)](https://goreportcard.com/report/github.com/bartmika/logfarm)
 [![License](https://img.shields.io/github/license/bartmika/logfarm)](https://github.com/bartmika/logfarm/blob/master/LICENSE)
 ![Go version](https://img.shields.io/github/go-mod/go-version/bartmika/logfarm)
 
-A syslog server written in Golang. **In development, use at your own risk.**
+A `syslog server` written in Golang. **In development, use at your own risk.**
 
 ## Get Started (Docker)
 
@@ -39,7 +39,7 @@ Afterwords run:
 $ docker compose up -d
 ```
 
-This will start `logfarm` with listening on port 514 (UDP) on the host for incoming RFC5424 syslog packets and store them into an SQLite database stored in default location.
+This will start `logfarm` with listening on **port 514 (UDP)** on the host for incoming **RFC5424** syslog packets and store them into an SQLite database stored in default location.
 
 ## Get Started (Golang)
 
@@ -90,7 +90,7 @@ Explanation:
 * `-u` is to use UDP protocol
 * `514` represent port 514
 
-Now check your log at the syslog server, you should see the message you just send.
+Now check your `logfarm` server, you should see the message you just send.
 
 ### Golang
 Here is a sample code of sending log in your code.
